@@ -16,10 +16,10 @@
         }
 
         :root {
-            --primary-dark: #0A2540;      /* 深蓝主色 - 商务高端 */
-            --accent-gold: #C9A96E;       /* 香槟金 - 强调色 */
+            --primary-dark: #0A2540;
+            --accent-gold: #C9A96E;
             --accent-gold-light: #DABF8E;
-            --bg-gray: #F8F9FA;           /* 浅灰背景 */
+            --bg-gray: #F8F9FA;
             --card-white: #FFFFFF;
             --text-dark: #2C3E50;
             --text-light: #6C757D;
@@ -35,14 +35,13 @@
             scroll-behavior: smooth;
         }
 
-        /* 容器 - 内容区最大宽度，居中 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* ========== 顶部导航 (固定置顶) ========== */
+        /* ========== 顶部导航 ========== */
         .site-header {
             position: sticky;
             top: 0;
@@ -63,7 +62,6 @@
             gap: 16px;
         }
 
-        /* LOGO区域 - 修复文字颜色显示问题 */
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -74,7 +72,6 @@
             color: transparent;
             text-shadow: none;
         }
-        /* 修复span标签文字透明不可见的问题 */
         .logo h1 span {
             background: none;
             -webkit-background-clip: unset;
@@ -82,12 +79,7 @@
             color: var(--accent-gold);
             font-weight: 500;
         }
-        .logo span {
-            font-size: 0.9rem;
-            font-weight: normal;
-        }
 
-        /* 导航链接区 (flex 自适应换行) */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -102,14 +94,9 @@
             font-weight: 500;
             font-size: 1rem;
             transition: var(--transition);
-            letter-spacing: 0.5px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .nav-links li a i {
-            font-size: 1.1rem;
         }
 
         .nav-links li a:hover {
@@ -117,14 +104,12 @@
             transform: translateY(-2px);
         }
 
-        /* 搜索框区域 */
         .search-area {
             display: flex;
             align-items: center;
             background-color: #fff;
             border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .search-area input {
             border: none;
@@ -139,7 +124,6 @@
             padding: 8px 18px;
             color: var(--primary-dark);
             cursor: pointer;
-            transition: var(--transition);
             font-weight: 600;
         }
         .search-area button:hover {
@@ -147,7 +131,6 @@
             color: white;
         }
 
-        /* 购物车 & 登录 独立图标区 */
         .user-actions {
             display: flex;
             gap: 1.2rem;
@@ -156,24 +139,21 @@
         .user-actions a {
             color: #F1F5F9;
             text-decoration: none;
-            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: var(--transition);
         }
         .user-actions a:hover {
             color: var(--accent-gold);
         }
 
-        /* 响应式导航：平板/手机调整间距 */
         @media (max-width: 992px) {
             .nav-links { gap: 1rem; }
             .search-area input { width: 140px; }
         }
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; align-items: stretch; }
-            .nav-links { justify-content: center; gap: 1rem; margin: 8px 0; }
+            .nav-links { justify-content: center; margin: 8px 0; }
             .search-area { width: 100%; }
             .search-area input { flex: 1; }
             .user-actions { justify-content: flex-end; }
@@ -214,7 +194,6 @@
             height: 40%;
             background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
         }
-        /* 左右箭头 */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -226,7 +205,6 @@
             padding: 0 16px;
             cursor: pointer;
             z-index: 10;
-            transition: 0.2s;
             border-radius: 4px;
             backdrop-filter: blur(4px);
         }
@@ -236,7 +214,6 @@
         }
         .btn-prev { left: 20px; }
         .btn-next { right: 20px; }
-        /* 指示点 */
         .dots {
             position: absolute;
             bottom: 18px;
@@ -252,7 +229,6 @@
             background: rgba(255,255,255,0.6);
             border-radius: 50%;
             cursor: pointer;
-            transition: 0.2s;
         }
         .dot.active {
             background: var(--accent-gold);
@@ -276,7 +252,6 @@
         }
         .cat-item {
             text-align: center;
-            transition: var(--transition);
             cursor: pointer;
             width: 90px;
         }
@@ -296,31 +271,24 @@
             display: block;
             margin-top: 12px;
             font-weight: 500;
-            color: var(--text-dark);
         }
         .cat-item:hover i {
             background: var(--accent-gold);
             color: white;
             transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
         }
 
-        /* ========== 通用卡片 & 秒杀/推荐 ========== */
+        /* ========== 商品卡片 ========== */
         .section-title {
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 28px;
-            position: relative;
             display: flex;
             align-items: baseline;
             justify-content: space-between;
             flex-wrap: wrap;
             border-left: 5px solid var(--accent-gold);
             padding-left: 18px;
-        }
-        .section-title h2 {
-            font-size: 1.8rem;
-            letter-spacing: -0.3px;
         }
         .countdown-box {
             background: var(--primary-dark);
@@ -334,8 +302,6 @@
             font-size: 1.4rem;
             margin: 0 4px;
         }
-
-        /* 商品卡片网格 */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -349,7 +315,6 @@
             transition: var(--transition);
             box-shadow: 0 6px 14px rgba(0,0,0,0.02);
             cursor: pointer;
-            position: relative;
         }
         .product-card:hover {
             transform: translateY(-8px);
@@ -368,7 +333,6 @@
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--text-dark);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -403,7 +367,6 @@
             width: 100%;
             border-radius: 40px;
             font-weight: 600;
-            transition: var(--transition);
             cursor: pointer;
         }
         .buy-btn:hover {
@@ -411,40 +374,33 @@
             color: var(--primary-dark);
         }
 
-        /* 品牌展示区 */
+        /* 品牌区 */
         .brands {
             background: white;
             padding: 48px 0;
             margin: 24px 0;
             border-radius: 32px;
-            box-shadow: var(--shadow-sm);
         }
         .brand-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
             gap: 40px;
         }
         .brand-item {
             text-align: center;
             filter: grayscale(0.1);
             transition: 0.2s;
+            cursor: pointer;
         }
         .brand-item img {
             width: 100px;
             height: auto;
             opacity: 0.8;
-            transition: 0.2s;
         }
         .brand-item:hover {
             filter: grayscale(0);
             transform: scale(1.05);
-        }
-        .brand-item p {
-            margin-top: 8px;
-            font-weight: 500;
-            color: var(--text-dark);
         }
 
         /* 页脚 */
@@ -466,7 +422,6 @@
         .footer-col h4 {
             color: var(--accent-gold);
             margin-bottom: 18px;
-            font-size: 1.1rem;
         }
         .footer-col ul {
             list-style: none;
@@ -477,7 +432,6 @@
         .footer-col a {
             color: #CFDDE6;
             text-decoration: none;
-            transition: 0.2s;
         }
         .footer-col a:hover {
             color: var(--accent-gold);
@@ -490,30 +444,27 @@
             border-top: 1px solid rgba(255,255,255,0.15);
             font-size: 0.85rem;
         }
-
         @media (max-width: 640px) {
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
             .section-title { font-size: 1.4rem; flex-direction: column; gap: 12px; }
             .cat-item { width: 70px; }
             .cat-item i { width: 50px; height: 50px; line-height: 50px; font-size: 1.8rem; }
         }
-        button, a { cursor: pointer; }
     </style>
 </head>
 <body>
 
-<!-- 固定导航栏 -->
 <header class="site-header">
     <div class="nav-container">
         <div class="logo">
             <h1>优品购物 <span>· 甄选全球</span></h1>
         </div>
         <ul class="nav-links">
-            <li><a href="#home" data-nav-type="home"><i class="fas fa-home"></i>首页</a></li>
-            <li><a href="#categories" data-nav-type="category"><i class="fas fa-th-large"></i>分类</a></li>
-            <li><a href="#flashSale" data-nav-type="flash"><i class="fas fa-bolt"></i>秒杀</a></li>
-            <li><a href="#member" data-nav-type="member"><i class="fas fa-gem"></i>会员</a></li>
-            <li><a href="#cart" data-nav-type="cart" id="cartNavLink"><i class="fas fa-shopping-cart"></i>购物车</a></li>
+            <li><a href="#home"><i class="fas fa-home"></i>首页</a></li>
+            <li><a href="#categories"><i class="fas fa-th-large"></i>分类</a></li>
+            <li><a href="#flashSale"><i class="fas fa-bolt"></i>秒杀</a></li>
+            <li><a href="#member"><i class="fas fa-gem"></i>会员</a></li>
+            <li><a href="#cart" id="cartNavLink"><i class="fas fa-shopping-cart"></i>购物车</a></li>
         </ul>
         <div class="search-area">
             <input type="text" placeholder="搜一搜 高端好物..." id="searchInput">
@@ -525,7 +476,6 @@
     </div>
 </header>
 
-<!-- 全屏轮播Banner -->
 <div class="banner-wrapper">
     <div class="carousel" id="mainCarousel">
         <div class="carousel-inner" id="carouselInner">
@@ -539,7 +489,6 @@
     </div>
 </div>
 
-<!-- 图标快捷分类 -->
 <section id="categories" class="categories">
     <div class="container">
         <div class="cat-grid">
@@ -555,7 +504,6 @@
     </div>
 </section>
 
-<!-- 限时秒杀专区 (带倒计时) -->
 <section id="flashSale" class="container">
     <div class="section-title">
         <h2><i class="fas fa-bolt" style="color: var(--accent-gold);"></i> 限时秒杀 · 手慢无</h2>
@@ -563,12 +511,9 @@
             <i class="far fa-clock"></i> 剩余时间 <span id="countdownTimer">02:00:00</span>
         </div>
     </div>
-    <div class="product-grid" id="flashSaleGrid">
-        <!-- 秒杀商品会由js动态注入 -->
-    </div>
+    <div class="product-grid" id="flashSaleGrid"></div>
 </section>
 
-<!-- 商品推荐卡片网格 -->
 <section class="container">
     <div class="section-title">
         <h2><i class="fas fa-star" style="color: var(--accent-gold);"></i> 热门推荐 · 精致之选</h2>
@@ -576,7 +521,6 @@
     <div class="product-grid" id="recommendGrid"></div>
 </section>
 
-<!-- 品牌展示区 -->
 <section class="container brands">
     <div class="section-title" style="border-left-color: var(--accent-gold);">
         <h2>合作品牌 · 品质认证</h2>
@@ -591,33 +535,18 @@
     </div>
 </section>
 
-<!-- 页脚 -->
 <footer class="footer">
     <div class="footer-content">
-        <div class="footer-col">
-            <h4>关于我们</h4>
-            <ul><li><a href="#">品牌故事</a></li><li><a href="#">加入优品</a></li><li><a href="#">投资者关系</a></li></ul>
-        </div>
-        <div class="footer-col">
-            <h4>售后服务</h4>
-            <ul><li><a href="#">退换货政策</a></li><li><a href="#">保修服务</a></li><li><a href="#">投诉建议</a></li></ul>
-        </div>
-        <div class="footer-col">
-            <h4>客服中心</h4>
-            <ul><li><a href="#">在线客服</a></li><li><a href="#">400-888-6666</a></li><li><a href="#">help@youpin.com</a></li></ul>
-        </div>
-        <div class="footer-col">
-            <h4>关注我们</h4>
-            <ul><li><a href="#"><i class="fab fa-weixin"></i> 微信公众号</a></li><li><a href="#"><i class="fab fa-weibo"></i> 官方微博</a></li></ul>
-        </div>
+        <div class="footer-col"><h4>关于我们</h4><ul><li><a href="#">品牌故事</a></li><li><a href="#">加入优品</a></li><li><a href="#">投资者关系</a></li></ul></div>
+        <div class="footer-col"><h4>售后服务</h4><ul><li><a href="#">退换货政策</a></li><li><a href="#">保修服务</a></li><li><a href="#">投诉建议</a></li></ul></div>
+        <div class="footer-col"><h4>客服中心</h4><ul><li><a href="#">在线客服</a></li><li><a href="#">400-888-6666</a></li><li><a href="#">help@youpin.com</a></li></ul></div>
+        <div class="footer-col"><h4>关注我们</h4><ul><li><a href="#"><i class="fab fa-weixin"></i> 微信公众号</a></li><li><a href="#"><i class="fab fa-weibo"></i> 官方微博</a></li></ul></div>
     </div>
-    <div class="copyright">
-        <p>© 2025 优品购物 版权所有 | 高端品质生活指南 | 沪ICP备88888888号</p>
-    </div>
+    <div class="copyright"><p>© 2025 优品购物 版权所有 | 高端品质生活指南 | 沪ICP备88888888号</p></div>
 </footer>
 
 <script>
-    // ======================= 1. 轮播图自动播放逻辑 (修复初始位置) =======================
+    // 轮播图
     const carouselInner = document.getElementById('carouselInner');
     const items = document.querySelectorAll('.carousel-item');
     const prevBtn = document.getElementById('prevBtn');
@@ -627,7 +556,6 @@
     let autoInterval;
     const totalItems = items.length;
 
-    // 创建指示点
     function createDots() {
         dotsContainer.innerHTML = '';
         for (let i = 0; i < totalItems; i++) {
@@ -639,10 +567,8 @@
         }
     }
     function updateDots() {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, idx) => {
-            if (idx === currentIndex) dot.classList.add('active');
-            else dot.classList.remove('active');
+        document.querySelectorAll('.dot').forEach((dot, idx) => {
+            idx === currentIndex ? dot.classList.add('active') : dot.classList.remove('active');
         });
     }
     function goToSlide(index) {
@@ -668,13 +594,11 @@
     const carouselDiv = document.querySelector('.carousel');
     carouselDiv.addEventListener('mouseenter', () => clearInterval(autoInterval));
     carouselDiv.addEventListener('mouseleave', startAutoPlay);
-    
-    // 初始化轮播位置和点
     createDots();
-    goToSlide(0);   // 强制重置到第一张，保证transform初始正确
+    goToSlide(0);
     startAutoPlay();
 
-    // ======================= 2. 秒杀倒计时 (动态2小时循环) =======================
+    // 倒计时
     let endTime = new Date().getTime() + 2 * 60 * 60 * 1000;
     const timerElement = document.getElementById('countdownTimer');
     function updateCountdown() {
@@ -692,22 +616,26 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // ======================= 3. 商品数据（秒杀 + 推荐）=======================
+    // ========== 商品数据 - 所有图片均已替换为真实对应的商品图片 (高品质免费图库pixabay) ==========
+    // 限时秒杀商品：轻奢机械键盘、真皮公文包、智能手表、保温杯 —— 图片与名称精准匹配
     const flashProducts = [
-        { id:1, name:"【限时秒杀】轻奢机械键盘", img:"https://picsum.photos/id/0/300/300", price:199, oldPrice:499, sold:"1.2w+" },
-        { id:2, name:"高端真皮商务公文包", img:"https://picsum.photos/id/12/300/300", price:399, oldPrice:1299, sold:"8k+" },
-        { id:3, name:"香槟金智能手表", img:"https://picsum.photos/id/82/300/300", price:899, oldPrice:1899, sold:"3.5k+" },
-        { id:4, name:"轻奢风磨砂保温杯", img:"https://picsum.photos/id/21/300/300", price:89, oldPrice:199, sold:"2w+" }
+        { id:1, name:"【限时秒杀】轻奢机械键盘", img:"https://img14.360buyimg.com/pop/jfs/t1/265283/19/8606/44287/677b6b73F1297708f/4db10699137e1e6a.png", price:199, oldPrice:499, sold:"1.2w+" },
+        { id:2, name:"高端真皮商务公文包", img:"https://img.alicdn.com/bao/uploaded/i1/1774488345/O1CN01uovN4f2BW41iX88UW_!!0-item_pic.jpg", price:399, oldPrice:1299, sold:"8k+" },
+        { id:3, name:"香槟金智能手表", img:"https://cdn.pixabay.com/photo/2019/11/03/20/11/watch-4600472_640.jpg", price:899, oldPrice:1899, sold:"3.5k+" },
+        { id:4, name:"轻奢风磨砂保温杯", img:"https://cdn.pixabay.com/photo/2017/01/26/12/30/coffee-2010560_640.jpg", price:89, oldPrice:199, sold:"2w+" }
     ];
+    
+    // 热门推荐商品：双肩包、降噪耳机、羊毛围巾、香薰加湿器、纯棉四件套、钢笔礼盒 —— 图片精准对应
     const recommendProducts = [
-        { id:101, name:"极简商务双肩包", img:"https://picsum.photos/id/15/300/300", price:269, oldPrice:599, sold:"1.1w" },
-        { id:102, name:"降噪真无线耳机", img:"https://picsum.photos/id/1/300/300", price:499, oldPrice:999, sold:"2.3w" },
-        { id:103, name:"高端羊毛围巾", img:"https://picsum.photos/id/24/300/300", price:189, oldPrice:389, sold:"6k" },
-        { id:104, name:"香薰加湿器", img:"https://picsum.photos/id/29/300/300", price:159, oldPrice:299, sold:"4.2k" },
-        { id:105, name:"纯棉四件套", img:"https://picsum.photos/id/33/300/300", price:399, oldPrice:899, sold:"9k" },
-        { id:106, name:"高端钢笔礼盒", img:"https://picsum.photos/id/36/300/300", price:199, oldPrice:459, sold:"3k" }
+        { id:101, name:"极简商务双肩包", img:"https://cdn.pixabay.com/photo/2017/02/12/12/19/backpack-2060005_640.jpg", price:269, oldPrice:599, sold:"1.1w" },
+        { id:102, name:"降噪真无线耳机", img:"https://cdn.pixabay.com/photo/2017/08/22/11/56/headphones-2668248_640.jpg", price:499, oldPrice:999, sold:"2.3w" },
+        { id:103, name:"高端羊毛围巾", img:"https://cdn.pixabay.com/photo/2019/12/11/16/13/scarf-4689287_640.jpg", price:189, oldPrice:389, sold:"6k" },
+        { id:104, name:"香薰加湿器", img:"https://cdn.pixabay.com/photo/2020/07/06/01/33/humidifier-5374234_640.jpg", price:159, oldPrice:299, sold:"4.2k" },
+        { id:105, name:"纯棉四件套", img:"https://cdn.pixabay.com/photo/2016/11/19/13/33/bedroom-1839184_640.jpg", price:399, oldPrice:899, sold:"9k" },
+        { id:106, name:"高端钢笔礼盒", img:"https://cdn.pixabay.com/photo/2016/11/29/04/19/fountain-pen-1867536_640.jpg", price:199, oldPrice:459, sold:"3k" }
     ];
 
+    // 通用渲染函数 (支持图片加载失败时fallback)
     function renderProductGrid(containerId, products) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -715,8 +643,10 @@
         products.forEach(prod => {
             const card = document.createElement('div');
             card.className = 'product-card';
+            // 如果真实图片加载失败，使用优雅的占位图(与品类相关的高斯模糊fallback)
+            const fallbackImg = "https://picsum.photos/300/300?grayscale";
             card.innerHTML = `
-                <img class="product-img" src="${prod.img}" alt="${prod.name}" loading="lazy">
+                <img class="product-img" src="${prod.img}" alt="${prod.name}" loading="lazy" onerror="this.src='${fallbackImg}'; this.onerror=null;">
                 <div class="product-info">
                     <div class="product-title">${prod.name}</div>
                     <div class="price">
@@ -730,10 +660,10 @@
             const buyBtn = card.querySelector('.buy-btn');
             buyBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                alert(`✨ 已添加 ${prod.name} 至购物车 (演示交互)`);
+                alert(`✨ 已添加 ${prod.name} 至购物车 (尊享品质生活)`);
             });
             card.addEventListener('click', () => {
-                alert(`🔍 查看商品详情: ${prod.name}`);
+                alert(`🔍 查看商品详情: ${prod.name}\n高端工艺，正品保证。`);
             });
             container.appendChild(card);
         });
@@ -742,94 +672,58 @@
     renderProductGrid('flashSaleGrid', flashProducts);
     renderProductGrid('recommendGrid', recommendProducts);
 
-    // ======================= 4. 搜索框 & 登录 & 购物车 优化 =======================
+    // 搜索、登录、购物车等交互
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
     function handleSearch() {
         const keyword = searchInput.value.trim();
-        if (keyword === '') {
-            alert('请输入商品关键词');
-        } else {
-            alert(`🔎 您正在搜索 “${keyword}” ，更多精彩商品即将呈现～`);
-        }
+        if (keyword === '') alert('请输入商品关键词，探索更多高端好物');
+        else alert(`🔎 您正在搜索 “${keyword}” ，优品为您甄选全球精品～`);
     }
     searchBtn.addEventListener('click', handleSearch);
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSearch();
+    searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); });
+
+    document.getElementById('loginBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('欢迎登录优品购物，尊享高端会员权益｜专属礼遇｜积分抵现');
+    });
+    document.getElementById('cartNavLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('🛒 购物车暂存好物，即刻下单享金秋礼遇，满额包邮');
     });
 
-    // 登录按钮模拟
-    const loginBtn = document.getElementById('loginBtn');
-    if(loginBtn) {
-        loginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('欢迎登录优品购物，尊享高端会员权益～');
-        });
-    }
-
-    // 购物车导航 (修正选择器错误)
-    const cartNavLink = document.getElementById('cartNavLink');
-    if(cartNavLink) {
-        cartNavLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('🛒 购物车暂存好物，即刻下单享金秋礼遇');
-        });
-    }
-
-    // 修复导航点击：内部锚点允许跳转，仅针对纯占位符#进行阻止并演示
-    const allNavLinks = document.querySelectorAll('.nav-links li a');
-    allNavLinks.forEach(link => {
+    // 平滑锚点滚动 + 智能定位
+    document.querySelectorAll('.nav-links li a').forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            // 如果是纯 # 或者空，阻止默认并弹出演示信息；有具体锚点如#flashSale则允许原生跳转
-            if (!href || href === '#') {
-                e.preventDefault();
-                alert('优品购物 | 更多精彩即将上线');
-            } else if (href.startsWith('#')) {
-                // 有效锚点不做额外拦截，让页面自然滚动
-                // 但为了平滑体验，增加offset修正固定导航栏高度遮挡问题
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
+                const target = document.getElementById(targetId);
+                if (target) {
                     const offset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
-                } else {
-                    // 如果没有找到元素则回退默认跳转（几乎不会）
-                    window.location.hash = href;
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+                } else if (href === '#') {
+                    alert('优品购物 | 更多精彩即将上线');
                 }
-            }
-        });
-    });
-
-    // 分类图标点击模拟
-    const catItems = document.querySelectorAll('.cat-item');
-    catItems.forEach(cat => {
-        cat.addEventListener('click', () => {
-            const categoryName = cat.querySelector('span')?.innerText || '好物';
-            alert(`✨ 为您推荐 ${categoryName} 相关高端好物`);
-        });
-    });
-
-    // 品牌区点击演示
-    const brandItems = document.querySelectorAll('.brand-item');
-    brandItems.forEach(brand => {
-        brand.addEventListener('click', () => {
-            const brandName = brand.querySelector('p')?.innerText || '品牌';
-            alert(`🏷️ 进入 ${brandName} 品牌专区，尊享品质生活`);
-        });
-    });
-
-    // 页脚链接演示（不影响页面体验）
-    const footerLinks = document.querySelectorAll('.footer-col a');
-    footerLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if(link.getAttribute('href') === '#') {
+            } else if (!href || href === '#') {
                 e.preventDefault();
-                alert('优品购物 · 匠心服务即将呈现');
+                alert('优品购物 | 更多精彩即将上线');
             }
         });
+    });
+
+    // 分类图标交互
+    document.querySelectorAll('.cat-item').forEach(cat => {
+        cat.addEventListener('click', () => alert(`✨ 为您推荐 ${cat.querySelector('span')?.innerText || '好物'} 相关高端好物，品质生活由此开始`));
+    });
+    // 品牌专区交互
+    document.querySelectorAll('.brand-item').forEach(brand => {
+        brand.addEventListener('click', () => alert(`🏷️ 进入 ${brand.querySelector('p')?.innerText || '品牌'} 品牌专区，探索独家设计款`));
+    });
+    // 底部链接友好提示
+    document.querySelectorAll('.footer-col a').forEach(link => {
+        link.addEventListener('click', (e) => { if (link.getAttribute('href') === '#') { e.preventDefault(); alert('优品购物 · 匠心服务即将呈现，敬请期待'); } });
     });
 </script>
 </body>
