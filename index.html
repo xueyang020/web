@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>优品购物 | 高端品质生活</title>
-    <!-- Font Awesome 6 (免费图标库) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ========== 全局样式 & 变量 ========== */
@@ -526,12 +525,12 @@
         <h2>合作品牌 · 品质认证</h2>
     </div>
     <div class="brand-grid">
-        <div class="brand-item"><img src="https://picsum.photos/id/1/120/60" alt="Samsung"><p>Samsung</p></div>
-        <div class="brand-item"><img src="https://picsum.photos/id/26/120/60" alt="Apple"><p>Apple</p></div>
-        <div class="brand-item"><img src="https://picsum.photos/id/28/120/60" alt="Nike"><p>Nike</p></div>
-        <div class="brand-item"><img src="https://picsum.photos/id/13/120/60" alt="Adidas"><p>Adidas</p></div>
-        <div class="brand-item"><img src="https://picsum.photos/id/39/120/60" alt="Dior"><p>Dior</p></div>
-        <div class="brand-item"><img src="https://picsum.photos/id/96/120/60" alt="Gucci"><p>Gucci</p></div>
+        <div class="brand-item"><img src="https://ts1.tc.mm.bing.net/th/id/R-C.ac58f036ef705112f0a20603bcc22ad2?rik=yUWzd6ZlmEveRA&riu=http%3a%2f%2fwww.kuaipng.com%2fUploads%2fpic%2fw%2f2021%2f05-12%2f100132%2fwater_100132_698_698_.png&ehk=NkAIjWrdhPEijI53tTDtfjbCNgfeqib%2bM12B8cYNPPI%3d&risl=&pid=ImgRaw&r=0" alt="Samsung"><p>Samsung</p></div>
+        <div class="brand-item"><img src="https://img.tukuppt.com/png_preview/00/33/87/opdiClGnsQ.jpg!/fw/780" alt="Apple"><p>Apple</p></div>
+        <div class="brand-item"><img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.qG-Gf9Yw3mU9o8Fzs6i_5QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Nike"><p>Nike</p></div>
+        <div class="brand-item"><img src="https://pic.mksucai.com/00/10/43/c06735569bc36d07.webp" alt="Adidas"><p>Adidas</p></div>
+        <div class="brand-item"><img src="https://logo800.cn/uploads/logoxinshang/43/logo800_16491607202864266.png" alt="Dior"><p>Dior</p></div>
+        <div class="brand-item"><img src="https://www.3wen.com/userfiles/images/58b.jpg" alt="Gucci"><p>Gucci</p></div>
     </div>
 </section>
 
@@ -621,18 +620,18 @@
     const flashProducts = [
         { id:1, name:"【限时秒杀】轻奢机械键盘", img:"https://img14.360buyimg.com/pop/jfs/t1/265283/19/8606/44287/677b6b73F1297708f/4db10699137e1e6a.png", price:199, oldPrice:499, sold:"1.2w+" },
         { id:2, name:"高端真皮商务公文包", img:"https://img.alicdn.com/bao/uploaded/i1/1774488345/O1CN01uovN4f2BW41iX88UW_!!0-item_pic.jpg", price:399, oldPrice:1299, sold:"8k+" },
-        { id:3, name:"香槟金智能手表", img:"https://cdn.pixabay.com/photo/2019/11/03/20/11/watch-4600472_640.jpg", price:899, oldPrice:1899, sold:"3.5k+" },
-        { id:4, name:"轻奢风磨砂保温杯", img:"https://cdn.pixabay.com/photo/2017/01/26/12/30/coffee-2010560_640.jpg", price:89, oldPrice:199, sold:"2w+" }
+        { id:3, name:"香槟金智能手表", img:"https://ts4.tc.mm.bing.net/th/id/OIP-C.3flDirnrUWTDXsL7Alr3gQHaEc?rs=1&pid=ImgDetMain&o=7&rm=3", price:899, oldPrice:1899, sold:"3.5k+" },
+        { id:4, name:"轻奢风磨砂保温杯", img:"https://img14.360buyimg.com/pop/jfs/t1/144996/3/6480/235299/5f447925E503ce511/e72449f2b76c0f99.png", price:89, oldPrice:199, sold:"2w+" }
     ];
     
     // 热门推荐商品：双肩包、降噪耳机、羊毛围巾、香薰加湿器、纯棉四件套、钢笔礼盒 —— 图片精准对应
     const recommendProducts = [
-        { id:101, name:"极简商务双肩包", img:"https://cdn.pixabay.com/photo/2017/02/12/12/19/backpack-2060005_640.jpg", price:269, oldPrice:599, sold:"1.1w" },
-        { id:102, name:"降噪真无线耳机", img:"https://cdn.pixabay.com/photo/2017/08/22/11/56/headphones-2668248_640.jpg", price:499, oldPrice:999, sold:"2.3w" },
-        { id:103, name:"高端羊毛围巾", img:"https://cdn.pixabay.com/photo/2019/12/11/16/13/scarf-4689287_640.jpg", price:189, oldPrice:389, sold:"6k" },
-        { id:104, name:"香薰加湿器", img:"https://cdn.pixabay.com/photo/2020/07/06/01/33/humidifier-5374234_640.jpg", price:159, oldPrice:299, sold:"4.2k" },
-        { id:105, name:"纯棉四件套", img:"https://cdn.pixabay.com/photo/2016/11/19/13/33/bedroom-1839184_640.jpg", price:399, oldPrice:899, sold:"9k" },
-        { id:106, name:"高端钢笔礼盒", img:"https://cdn.pixabay.com/photo/2016/11/29/04/19/fountain-pen-1867536_640.jpg", price:199, oldPrice:459, sold:"3k" }
+        { id:101, name:"极简商务双肩包", img:"https://ts3.tc.mm.bing.net/th/id/OIP-C.tcrHh_KCZxaovr6rFLR7PgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price:269, oldPrice:599, sold:"1.1w" },
+        { id:102, name:"降噪真无线耳机", img:"https://ts3.tc.mm.bing.net/th/id/OIP-C.8ijt1fOgLsxQQxbUQ81MTQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price:499, oldPrice:999, sold:"2.3w" },
+        { id:103, name:"高端羊毛围巾", img:"https://ts4.tc.mm.bing.net/th/id/OIP-C.y3LCcnb6JT9I1CRVfk8ixAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price:189, oldPrice:389, sold:"6k" },
+        { id:104, name:"香薰加湿器", img:"https://img.alicdn.com/bao/uploaded/i1/2214115851717/O1CN01R9W1vA1OYQwPq7WaF_!!0-item_pic.jpg", price:159, oldPrice:299, sold:"4.2k" },
+        { id:105, name:"纯棉四件套", img:"https://img.alicdn.com/bao/uploaded/i3/2097385502/O1CN01FL6PMj1qVxyXbXr8U_!!0-item_pic.jpg", price:399, oldPrice:899, sold:"9k" },
+        { id:106, name:"高端钢笔礼盒", img:"https://ts1.tc.mm.bing.net/th/id/OIP-C.Q53VG5E3sQSJW12Rcga4vAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price:199, oldPrice:459, sold:"3k" }
     ];
 
     // 通用渲染函数 (支持图片加载失败时fallback)
