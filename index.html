@@ -63,7 +63,7 @@
             gap: 16px;
         }
 
-        /* LOGO区域 */
+        /* LOGO区域 - 修复文字颜色显示问题 */
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -74,13 +74,17 @@
             color: transparent;
             text-shadow: none;
         }
-        .logo span {
-            font-size: 0.9rem;
-            font-weight: normal;
-            color: var(--accent-gold);
+        /* 修复span标签文字透明不可见的问题 */
+        .logo h1 span {
             background: none;
             -webkit-background-clip: unset;
             background-clip: unset;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: normal;
         }
 
         /* 导航链接区 (flex 自适应换行) */
@@ -505,18 +509,18 @@
             <h1>优品购物 <span>· 甄选全球</span></h1>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-home"></i>首页</a></li>
-            <li><a href="#"><i class="fas fa-th-large"></i>分类</a></li>
-            <li><a href="#flashSale"><i class="fas fa-bolt"></i>秒杀</a></li>
-            <li><a href="#"><i class="fas fa-gem"></i>会员</a></li>
-            <li><a href="#"><i class="fas fa-shopping-cart"></i>购物车</a></li>
+            <li><a href="#home" data-nav-type="home"><i class="fas fa-home"></i>首页</a></li>
+            <li><a href="#categories" data-nav-type="category"><i class="fas fa-th-large"></i>分类</a></li>
+            <li><a href="#flashSale" data-nav-type="flash"><i class="fas fa-bolt"></i>秒杀</a></li>
+            <li><a href="#member" data-nav-type="member"><i class="fas fa-gem"></i>会员</a></li>
+            <li><a href="#cart" data-nav-type="cart" id="cartNavLink"><i class="fas fa-shopping-cart"></i>购物车</a></li>
         </ul>
         <div class="search-area">
             <input type="text" placeholder="搜一搜 高端好物..." id="searchInput">
             <button id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
         <div class="user-actions">
-            <a href="#"><i class="fas fa-user-circle"></i>登录</a>
+            <a href="#" id="loginBtn"><i class="fas fa-user-circle"></i>登录</a>
         </div>
     </div>
 </header>
@@ -536,7 +540,7 @@
 </div>
 
 <!-- 图标快捷分类 -->
-<section class="categories">
+<section id="categories" class="categories">
     <div class="container">
         <div class="cat-grid">
             <div class="cat-item"><i class="fas fa-mobile-alt"></i><span>手机数码</span></div>
@@ -560,7 +564,7 @@
         </div>
     </div>
     <div class="product-grid" id="flashSaleGrid">
-        <!-- 秒杀商品会由js动态注入，保证一致性，也可以写静态 -->
+        <!-- 秒杀商品会由js动态注入 -->
     </div>
 </section>
 
@@ -613,7 +617,7 @@
 </footer>
 
 <script>
-    // ======================= 1. 轮播图自动播放逻辑 =======================
+    // ======================= 1. 轮播图自动播放逻辑 (修复初始位置) =======================
     const carouselInner = document.getElementById('carouselInner');
     const items = document.querySelectorAll('.carousel-item');
     const prevBtn = document.getElementById('prevBtn');
@@ -652,6 +656,7 @@
     function nextSlide() { goToSlide(currentIndex + 1); }
     function prevSlide() { goToSlide(currentIndex - 1); }
     function startAutoPlay() {
+        if (autoInterval) clearInterval(autoInterval);
         autoInterval = setInterval(nextSlide, 4500);
     }
     function resetAutoPlay() {
@@ -660,21 +665,22 @@
     }
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
-    // 鼠标悬停轮播暂停（优雅体验）
     const carouselDiv = document.querySelector('.carousel');
     carouselDiv.addEventListener('mouseenter', () => clearInterval(autoInterval));
     carouselDiv.addEventListener('mouseleave', startAutoPlay);
+    
+    // 初始化轮播位置和点
     createDots();
+    goToSlide(0);   // 强制重置到第一张，保证transform初始正确
     startAutoPlay();
 
-    // ======================= 2. 秒杀倒计时 (动态2小时) =======================
-    let endTime = new Date().getTime() + 2 * 60 * 60 * 1000; // 2小时倒计时演示
+    // ======================= 2. 秒杀倒计时 (动态2小时循环) =======================
+    let endTime = new Date().getTime() + 2 * 60 * 60 * 1000;
     const timerElement = document.getElementById('countdownTimer');
     function updateCountdown() {
         const now = new Date().getTime();
         let distance = endTime - now;
         if (distance <= 0) {
-            // 倒计时结束后重置为2小时，模拟新一场秒杀（实际业务可显示已结束，这里保持演示循环）
             endTime = new Date().getTime() + 2 * 60 * 60 * 1000;
             distance = endTime - new Date().getTime();
         }
@@ -687,14 +693,12 @@
     updateCountdown();
 
     // ======================= 3. 商品数据（秒杀 + 推荐）=======================
-    // 秒杀商品列表 (限时低价)
     const flashProducts = [
         { id:1, name:"【限时秒杀】轻奢机械键盘", img:"https://picsum.photos/id/0/300/300", price:199, oldPrice:499, sold:"1.2w+" },
         { id:2, name:"高端真皮商务公文包", img:"https://picsum.photos/id/12/300/300", price:399, oldPrice:1299, sold:"8k+" },
         { id:3, name:"香槟金智能手表", img:"https://picsum.photos/id/82/300/300", price:899, oldPrice:1899, sold:"3.5k+" },
         { id:4, name:"轻奢风磨砂保温杯", img:"https://picsum.photos/id/21/300/300", price:89, oldPrice:199, sold:"2w+" }
     ];
-    // 推荐商品 (热门精选)
     const recommendProducts = [
         { id:101, name:"极简商务双肩包", img:"https://picsum.photos/id/15/300/300", price:269, oldPrice:599, sold:"1.1w" },
         { id:102, name:"降噪真无线耳机", img:"https://picsum.photos/id/1/300/300", price:499, oldPrice:999, sold:"2.3w" },
@@ -704,7 +708,6 @@
         { id:106, name:"高端钢笔礼盒", img:"https://picsum.photos/id/36/300/300", price:199, oldPrice:459, sold:"3k" }
     ];
 
-    // 渲染商品卡片通用函数 (支持购买按钮点击模拟)
     function renderProductGrid(containerId, products) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -724,25 +727,22 @@
                     <button class="buy-btn">立即购买</button>
                 </div>
             `;
-            // 购买按钮点击事件模拟
             const buyBtn = card.querySelector('.buy-btn');
             buyBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                alert(`已添加 ${prod.name} 至购物车 (演示交互)`);
+                alert(`✨ 已添加 ${prod.name} 至购物车 (演示交互)`);
             });
-            // 卡片点击也可跳转详情（演示）
             card.addEventListener('click', () => {
-                alert(`查看商品详情: ${prod.name}`);
+                alert(`🔍 查看商品详情: ${prod.name}`);
             });
             container.appendChild(card);
         });
     }
 
-    // 渲染秒杀区和推荐区
     renderProductGrid('flashSaleGrid', flashProducts);
     renderProductGrid('recommendGrid', recommendProducts);
 
-    // ======================= 4. 搜索框模拟交互 =======================
+    // ======================= 4. 搜索框 & 登录 & 购物车 优化 =======================
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
     function handleSearch() {
@@ -750,7 +750,7 @@
         if (keyword === '') {
             alert('请输入商品关键词');
         } else {
-            alert(`您正在搜索 “${keyword}” ，更多精彩商品即将呈现～`);
+            alert(`🔎 您正在搜索 “${keyword}” ，更多精彩商品即将呈现～`);
         }
     }
     searchBtn.addEventListener('click', handleSearch);
@@ -758,36 +758,77 @@
         if (e.key === 'Enter') handleSearch();
     });
 
-    // 登录/购物车简单模拟
-    const loginLink = document.querySelector('.user-actions a');
-    if(loginLink) {
-        loginLink.addEventListener('click', (e) => {
+    // 登录按钮模拟
+    const loginBtn = document.getElementById('loginBtn');
+    if(loginBtn) {
+        loginBtn.addEventListener('click', (e) => {
             e.preventDefault();
             alert('欢迎登录优品购物，尊享高端会员权益～');
         });
     }
-    const cartLink = document.querySelector('.nav-links li a[href="#"]:nth-child(5)');
-    if(cartLink) {
-        cartLink.addEventListener('click', (e) => {
+
+    // 购物车导航 (修正选择器错误)
+    const cartNavLink = document.getElementById('cartNavLink');
+    if(cartNavLink) {
+        cartNavLink.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('购物车暂存好物，即刻下单享金秋礼遇');
+            alert('🛒 购物车暂存好物，即刻下单享金秋礼遇');
         });
     }
-    // 其他导航简单演示
+
+    // 修复导航点击：内部锚点允许跳转，仅针对纯占位符#进行阻止并演示
     const allNavLinks = document.querySelectorAll('.nav-links li a');
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            if(link.getAttribute('href') === '#') {
+            const href = link.getAttribute('href');
+            // 如果是纯 # 或者空，阻止默认并弹出演示信息；有具体锚点如#flashSale则允许原生跳转
+            if (!href || href === '#') {
                 e.preventDefault();
                 alert('优品购物 | 更多精彩即将上线');
+            } else if (href.startsWith('#')) {
+                // 有效锚点不做额外拦截，让页面自然滚动
+                // 但为了平滑体验，增加offset修正固定导航栏高度遮挡问题
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+                } else {
+                    // 如果没有找到元素则回退默认跳转（几乎不会）
+                    window.location.hash = href;
+                }
             }
         });
     });
+
     // 分类图标点击模拟
     const catItems = document.querySelectorAll('.cat-item');
     catItems.forEach(cat => {
         cat.addEventListener('click', () => {
-            alert(`为您推荐 ${cat.querySelector('span')?.innerText} 相关高端好物`);
+            const categoryName = cat.querySelector('span')?.innerText || '好物';
+            alert(`✨ 为您推荐 ${categoryName} 相关高端好物`);
+        });
+    });
+
+    // 品牌区点击演示
+    const brandItems = document.querySelectorAll('.brand-item');
+    brandItems.forEach(brand => {
+        brand.addEventListener('click', () => {
+            const brandName = brand.querySelector('p')?.innerText || '品牌';
+            alert(`🏷️ 进入 ${brandName} 品牌专区，尊享品质生活`);
+        });
+    });
+
+    // 页脚链接演示（不影响页面体验）
+    const footerLinks = document.querySelectorAll('.footer-col a');
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(link.getAttribute('href') === '#') {
+                e.preventDefault();
+                alert('优品购物 · 匠心服务即将呈现');
+            }
         });
     });
 </script>
